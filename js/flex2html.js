@@ -338,7 +338,7 @@ function box_object(json) {
       }
    }
    
-   return `<div class="MdBx ${layout1} ${layout2} ${fl} ${exabs} ${exmgn} ${spc} ${ExBdr} ${ExBdrRad} ${jfc} ${alg} ${ext} ${exb} ${exl} ${exr} ${ExPadA} ${ExPadT} ${ExPadB} ${ExPadL} ${ExPadR}" style="${style}" id="a9e89fd4-d224-4fca-8472-91522feb6e16"><!-- content --></div>`
+   return `<div class="MdBx ${layout1} ${layout2} ${fl} ${exabs} ${exmgn} ${spc} ${ExBdr} ${ExBdrRad} ${jfc} ${alg} ${ext} ${exb} ${exl} ${exr} ${ExPadA} ${ExPadT} ${ExPadB} ${ExPadL} ${ExPadR}" style="${style}"><!-- content --></div>`
 }
 
 function button_object(json) {
@@ -415,7 +415,7 @@ function button_object(json) {
       exr = (offsetEnd) ? 'ExR' + upperalldigit(offsetEnd) : ''
    }
 
-   return `<div class="MdBtn ${ExBtn} ${height} ${fl} ${exabs} ${exmgn} ${grv} ${ext} ${exb} ${exl} ${exr}" style="${style2}" id="8d1efea2-4017-4c89-8931-98a5f4f141f2"><a style="${style3}"><div>${action.label}</div></a></div>`
+   return `<div class="MdBtn ${ExBtn} ${height} ${fl} ${exabs} ${exmgn} ${grv} ${ext} ${exb} ${exl} ${exr}" style="${style2}" ><a style="${style3}"><div>${action.label}</div></a></div>`
 }
 function filler_object(json) {
    let style = ''
@@ -426,7 +426,7 @@ function filler_object(json) {
    } else {
       fl = (flex >= 0) ? `fl${flex}` : ''
    }
-   return `<div class="mdBxFiller ${fl}" style="${style}" id="b40a25e3-3325-4bed-bee5-40532fd9564d"></div>`
+   return `<div class="mdBxFiller ${fl}" style="${style}" ></div>`
 }
 function icon_object(json) {
    let style2 = ''
@@ -484,7 +484,7 @@ function icon_object(json) {
       exr = (offsetEnd) ? 'ExR' + upperalldigit(offsetEnd) : ''
    }
    
-   return `<div class="MdIco fl0 ${size} ${exabs} ${exmgn} ${ext} ${exb} ${exl} ${exr}" style="${style2}" id="b50a374f-a19c-4a0c-bb80-79d27db2ced6"><div><span style="${styleimg}"></span></div></div>`
+   return `<div class="MdIco fl0 ${size} ${exabs} ${exmgn} ${ext} ${exb} ${exl} ${exr}" style="${style2}" ><div><span style="${styleimg}"></span></div></div>`
 }
 function image_object(json) {
    let style = ''
@@ -557,7 +557,7 @@ function image_object(json) {
       exr = (offsetEnd) ? 'ExR' + upperalldigit(offsetEnd) : ''
    }
    
-   return `<div class="MdImg Ex${aspectMode} ${fl} ${size} ${exabs} ${exmgn} ${alg} ${grv} ${ext} ${exb} ${exl} ${exr}" id="6ce574dc-7952-419c-a9fb-5d34efc68866" style="${style}">
+   return `<div class="MdImg Ex${aspectMode} ${fl} ${size} ${exabs} ${exmgn} ${alg} ${grv} ${ext} ${exb} ${exl} ${exr}"  style="${style}">
                   <div style="${style2}">
                      <a style="padding-bottom:${ratio}%;">
                         <span style="${styleimg}"></span>
@@ -579,7 +579,7 @@ function separator_object(json) {
       style += `border-color:${color} !important;`
    }
 
-   return `<div class="fl0 MdSep ${exmgn}" style="${style}" id="b4d45e50-88b4-494c-84e3-00243e9325ed"></div>`
+   return `<div class="fl0 MdSep ${exmgn}" style="${style}" ></div>`
 }
 function spacer_object(json) {
    let {size} = json
@@ -589,7 +589,7 @@ function spacer_object(json) {
    } else {
       size = 'spc' + upperalldigit(size)
    }
-   return `<div class="mdBxSpacer ${size} fl0" id="cdb44c05-fd5e-42fc-be8c-22460e8b2e50"></div>`
+   return `<div class="mdBxSpacer ${size} fl0" ></div>`
 }
 function span_object(json) {
 
@@ -614,7 +614,7 @@ function span_object(json) {
    ExFntSty = (style === 'normal') ? 'ExFntStyNml' : (style === 'italic') ? 'ExFntStyIt' : ''
    ExTxtDec = (decoration === 'line-through') ? 'ExTxtDecLt' : (decoration === 'underline') ? 'ExTxtDecUl' : (decoration === 'none') ? 'ExTxtDecNone' : ''
   
-   return `<span class="MdSpn ${ExWB} ${size} ${ExFntSty} ${ExTxtDec}" style="${style2}" id="c7036b81-f99e-4d00-b376-e3fa2651aa1d">${text}</span>`
+   return `<span class="MdSpn ${ExWB} ${size} ${ExFntSty} ${ExTxtDec}" style="${style2}" >${text}</span>`
 }
 function carousel_struc() {
    return `<div class="LySlider"><div class="lyInner"><!-- inner --></div></div><br>`
@@ -707,7 +707,7 @@ function text_object(json) {
       exr = (offsetEnd) ? 'ExR' + upperalldigit(offsetEnd) : ''
    }
    text = (!text) ? '' : text 
-   return `<div class="MdTxt ${fl} ${exabs} ${exmgn} ${alg} ${grv} ${size} ${ExWB} ${ExFntSty} ${ExTxtDec} ${ExWrap} ${ext} ${exb} ${exl} ${exr}" id="5ca69d64-f99f-48f9-bd3c-4b0a4438e5a5" style="${style2}"><p>${text}<!-- content --></p></div>`
+   return `<div class="MdTxt ${fl} ${exabs} ${exmgn} ${alg} ${grv} ${size} ${ExWB} ${ExFntSty} ${ExTxtDec} ${ExWrap} ${ext} ${exb} ${exl} ${exr}" style="${style2}"><p>${text}<!-- content --></p></div>`
 }
 function upper1digit(str) {
    return str.charAt(0).toUpperCase()
