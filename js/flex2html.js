@@ -415,7 +415,16 @@ function button_object(json) {
       exr = (offsetEnd) ? 'ExR' + upperalldigit(offsetEnd) : ''
    }
 
-   return `<div class="MdBtn ${ExBtn} ${height} ${fl} ${exabs} ${exmgn} ${grv} ${ext} ${exb} ${exl} ${exr}" style="${style2}" ><a style="${style3}"><div>${action.label}</div></a></div>`
+   action = (!action) ? {'type':'none'} : action
+   if(action.type === 'uri') {
+      return `<div class="MdBtn ${ExBtn} ${height} ${fl} ${exabs} ${exmgn} ${grv} ${ext} ${exb} ${exl} ${exr}" style="${style2}" id="8d1efea2-4017-4c89-8931-98a5f4f141f2"><a href="${action.uri}" target="_blank" style="${style3}"><div>${action.label}</div></a></div>`
+   } else if(action.type === 'message') {
+      return `<div class="MdBtn ${ExBtn} ${height} ${fl} ${exabs} ${exmgn} ${grv} ${ext} ${exb} ${exl} ${exr}" style="${style2}" id="8d1efea2-4017-4c89-8931-98a5f4f141f2"><a onclick="alert('message: ${action.text}')" style="${style3}"><div>${action.label}</div></a></div>`
+   } else if(action.type === 'postback') {
+      return `<div class="MdBtn ${ExBtn} ${height} ${fl} ${exabs} ${exmgn} ${grv} ${ext} ${exb} ${exl} ${exr}" style="${style2}" id="8d1efea2-4017-4c89-8931-98a5f4f141f2"><a onclick="alert('postback data: ${action.data}')" style="${style3}"><div>${action.label}</div></a></div>`
+   } else {
+      return `<div class="MdBtn ${ExBtn} ${height} ${fl} ${exabs} ${exmgn} ${grv} ${ext} ${exb} ${exl} ${exr}" style="${style2}" id="8d1efea2-4017-4c89-8931-98a5f4f141f2"><a style="${style3}"><div>${action.label}</div></a></div>`
+   }
 }
 function filler_object(json) {
    let style = ''
@@ -489,7 +498,7 @@ function icon_object(json) {
 function image_object(json) {
    let style = ''
    let style2 = ''
-   let {aspectMode, size, aspectRatio, url, position, flex, margin, align, gravity, backgroundColor, offsetTop, offsetBottom, offsetStart, offsetEnd} = json
+   let {aspectMode, size, aspectRatio, url, position, flex, margin, align, gravity, backgroundColor, offsetTop, offsetBottom, offsetStart, offsetEnd, action} = json
    let styleimg = `background-image:url('${url}');`
    if(backgroundColor) {
       styleimg += `background-color:${backgroundColor} !important;`
@@ -556,14 +565,42 @@ function image_object(json) {
    } else {
       exr = (offsetEnd) ? 'ExR' + upperalldigit(offsetEnd) : ''
    }
-   
-   return `<div class="MdImg Ex${aspectMode} ${fl} ${size} ${exabs} ${exmgn} ${alg} ${grv} ${ext} ${exb} ${exl} ${exr}"  style="${style}">
+   action = (!action) ? {'type':'none'} : action
+   if(action.type === 'uri') {
+      return `<div class="MdImg Ex${aspectMode} ${fl} ${size} ${exabs} ${exmgn} ${alg} ${grv} ${ext} ${exb} ${exl} ${exr}"  style="${style}">
+                  <div style="${style2}">
+                     <a href="${action.uri}" target="_blank" style="padding-bottom:${ratio}%;">
+                        <span style="${styleimg}"></span>
+                     </a>
+                  </div>
+               </div>`
+   } else if(action.type === 'message') {
+      return `<div class="MdImg Ex${aspectMode} ${fl} ${size} ${exabs} ${exmgn} ${alg} ${grv} ${ext} ${exb} ${exl} ${exr}"  style="${style}">
+                  <div style="${style2}">
+                     <a onclick="alert('message: ${action.text}')" style="padding-bottom:${ratio}%;">
+                        <span style="${styleimg}"></span>
+                     </a>
+                  </div>
+               </div>`
+   } else if(action.type === 'postback') {
+      return `<div class="MdImg Ex${aspectMode} ${fl} ${size} ${exabs} ${exmgn} ${alg} ${grv} ${ext} ${exb} ${exl} ${exr}"  style="${style}">
+                  <div style="${style2}">
+                     <a onclick="alert('postback data: ${action.data}')" style="padding-bottom:${ratio}%;">
+                        <span style="${styleimg}"></span>
+                     </a>
+                  </div>
+               </div>`
+   } else {
+      return `<div class="MdImg Ex${aspectMode} ${fl} ${size} ${exabs} ${exmgn} ${alg} ${grv} ${ext} ${exb} ${exl} ${exr}"  style="${style}">
                   <div style="${style2}">
                      <a style="padding-bottom:${ratio}%;">
                         <span style="${styleimg}"></span>
                      </a>
                   </div>
                </div>`
+   }
+
+   
 }
 function separator_object(json) {
    let style = ''
