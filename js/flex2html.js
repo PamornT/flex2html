@@ -23,8 +23,8 @@ function flex2html(element, json) {
 
 function bubble_object(json) {
    let { hero, header, body, footer } = json
-   let hero_object = hero_struc()
-   let header_object = header_struc()
+   let hero_object = hero_struc(json)
+   let header_object = header_struc(json)
    let body_object = body_struc(json)
    let footer_object = footer_struc(json)
    let bubble = bubble_struc(json)
@@ -665,19 +665,42 @@ function bubble_struc(json) {
 
    return `<div class="lyItem Ly${size}"><div class="T1 fx${direction.toUpperCase()}" dir="${direction}"><!-- hero --><!-- header --><!-- body --><!-- footer --></div></div>`
 }
-function hero_struc() {
-   return `<div class="t1Hero"><!-- inner --></div>`
+function hero_struc(json) {
+   let {styles} = json
+   let backgroundColor = ''
+   if(styles) {
+      let { hero } = styles
+      backgroundColor = (hero && hero.backgroundColor) ? `background-color:${hero.backgroundColor}` : ''
+   }
+   return `<div class="t1Hero" style="${backgroundColor}"><!-- inner --></div>`
 }
-function header_struc() {
-   return `<div class="t1Header"><!-- inner --></div>`
+function header_struc(json) {
+   let {styles} = json
+   let backgroundColor = ''
+   if(styles) {
+      let { header } = styles
+      backgroundColor = (header && header.backgroundColor) ? `background-color:${header.backgroundColor}` : ''
+   }
+   return `<div class="t1Header" style="${backgroundColor}"><!-- inner --></div>`
 }
 function body_struc(json) {
-   let {footer} = json
-   let ExHasFooter = (json) ? 'ExHasFooter' : ''
-   return `<div class="t1Body ${ExHasFooter}"><!-- inner --></div>`
+   let {footer, styles} = json
+   let backgroundColor = ''
+   if(styles) {
+      let { body } = styles
+      backgroundColor = (body && body.backgroundColor) ? `background-color:${body.backgroundColor}` : ''
+   }
+   let ExHasFooter = (footer) ? 'ExHasFooter' : ''
+   return `<div class="t1Body ${ExHasFooter}" style="${backgroundColor}"><!-- inner --></div>`
 }
-function footer_struc() {
-   return `<div class="t1Footer"><!-- inner --></div>`
+function footer_struc(json) {
+   let {styles} = json
+   let backgroundColor = ''
+   if(styles) {
+      let { footer } = styles
+      backgroundColor = (footer && footer.backgroundColor) ? `background-color:${footer.backgroundColor}` : ''
+   }
+   return `<div class="t1Footer" style="${backgroundColor}"><!-- inner --></div>`
 }
 function text_object(json) {
    
