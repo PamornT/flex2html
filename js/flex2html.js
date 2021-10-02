@@ -369,7 +369,7 @@ function button_object(json) {
    if(style && style !== '') {
       switch(style) {
          case 'link':
-            ExBtnfc = 'ExBtnL'
+            ExBtn = 'ExBtnL'
             break;
          case 'primary':
             ExBtn = 'ExBtn1'
