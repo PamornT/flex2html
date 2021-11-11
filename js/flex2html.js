@@ -176,7 +176,7 @@ function box_object(json) {
       exmgn = (margin) ? 'ExMgnT' + upperalldigit(margin) : ''
    }
    if(width && width !== '') {
-      style += `width:${width};`
+      style += `width:${width}; max-width:${width};`
    }
    if(height && height !== '') {
       style += `height:${height};`
