@@ -144,7 +144,7 @@ function convert_object(json) {
 
 function box_object(json) {
    let style = ''
-   let {layout, position, flex, spacing, margin, width, height, backgroundColor, borderColor, borderWidth, cornerRadius, justifyContent, alignItems, offsetTop, offsetBottom, offsetStart, offsetEnd, paddingAll, paddingTop, paddingBottom, paddingStart, paddingEnd, background} = json
+   let {layout, position, flex, spacing, margin, width, height, backgroundColor, borderColor, borderWidth, cornerRadius, justifyContent, alignItems, offsetTop, offsetBottom, offsetStart, offsetEnd, paddingAll, paddingTop, paddingBottom, paddingStart, paddingEnd, background, maxWidth, maxHeight} = json
    if(layout === 'baseline') {
       layout1 = 'hr'
       layout2 = 'bl'
@@ -336,6 +336,12 @@ function box_object(json) {
       } else {
          style += `background: linear-gradient(${background.angle}, ${background.startColor} 0%, ${background.endColor} 100%);`
       }
+   }
+   if(maxWidth && maxWidth.indexOf("px") >= 0) {
+      style += `max-width:${maxWidth};`
+   }
+   if(maxHeight && maxHeight.indexOf("px") >= 0) {
+      style += `max-height:${maxHeight};`
    }
    
    return `<div class="MdBx ${layout1} ${layout2} ${fl} ${exabs} ${exmgn} ${spc} ${ExBdr} ${ExBdrRad} ${jfc} ${alg} ${ext} ${exb} ${exl} ${exr} ${ExPadA} ${ExPadT} ${ExPadB} ${ExPadL} ${ExPadR}" style="${style}"><!-- content --></div>`
@@ -705,7 +711,7 @@ function footer_struc(json) {
 function text_object(json) {
    
    let style2 = ''
-   let {flex, margin, size, position, align, gravity, text, color, weight, style, decoration, wrap, maxLines, adjustMode, offsetTop, offsetBottom, offsetStart, offsetEnd} = json
+   let {flex, margin, size, position, align, gravity, text, color, weight, style, decoration, wrap, maxLines, adjustMode, offsetTop, offsetBottom, offsetStart, offsetEnd, lineSpacing} = json
    
    fl = ''
    if(flex > 3) {
@@ -765,6 +771,11 @@ function text_object(json) {
       exr = ''
    } else {
       exr = (offsetEnd) ? 'ExR' + upperalldigit(offsetEnd) : ''
+   }
+
+   if(lineSpacing && lineSpacing.indexOf("px") >= 0) {
+      let lineHeight = (parseInt(lineSpacing.replace('px','')) + 15) + 'px'
+      style2 += `line-height:${lineHeight};`
    }
    text = (!text) ? '' : text 
    return `<div class="MdTxt ${fl} ${exabs} ${exmgn} ${alg} ${grv} ${size} ${ExWB} ${ExFntSty} ${ExTxtDec} ${ExWrap} ${ext} ${exb} ${exl} ${exr}" style="${style2}"><p>${text}<!-- content --></p></div>`
