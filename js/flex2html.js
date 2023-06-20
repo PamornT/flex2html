@@ -34,20 +34,19 @@ function bubble_object(json) {
       box = hero_box_video(hero)
    } else {
       for(let key in hero){
-         console.log(key)
          if(hero.hasOwnProperty(key)) {
             if(key === 'type' && hero[key] === 'box') {
                box = box_object(hero)
                let box_inner = box_recursive(box, hero['contents'])
                box = box_inner
             } else {
-               box = convert_object(hero)
+               // box = convert_object(hero)
             }
          }
       }
    }
    hero_object = hero_object.replace('<!-- inner -->', box)
-
+   
    box = ''
    for(let key in header){
       if(header.hasOwnProperty(key)) {
@@ -93,7 +92,6 @@ function bubble_object(json) {
    return bubble
 }
 function hero_box_video(hero) {  
-   console.log(hero) 
    return `<div class="ExCover MdImg ExFull"><div><video width="100%" poster="${hero?.previewUrl}" controls>
    <source src="${hero?.url}" type="video/mp4">
    <source src="${hero?.url}" type="video/ogg">
@@ -168,7 +166,6 @@ function box_object(json) {
       layout1 = 'vr'
       layout2 = ''
    }
-   console.log(json)
    fl = ''
    if(flex > 3) {
       style += `-webkit-box-flex:${flex};flex-grow:${flex};`
