@@ -37,7 +37,8 @@ function bubble_object(json) {
          if(hero.hasOwnProperty(key)) {
             if(key === 'type' && hero[key] === 'box') {
                box = box_object(hero)
-               let box_inner = box_recursive(box, hero['contents'])
+               layout = hero['layout']
+               let box_inner = box_recursive(box, layout, hero['contents'])
                box = box_inner
             } else {
                // box = convert_object(hero)
@@ -52,7 +53,8 @@ function bubble_object(json) {
       if(header.hasOwnProperty(key)) {
          if(key === 'type' && header[key] === 'box') {
             box = box_object(header)
-            let box_inner = box_recursive(box, header['contents'])
+            layout = header['layout']
+            let box_inner = box_recursive(box, layout, header['contents'])
             box = box_inner
          }
       }
@@ -64,7 +66,8 @@ function bubble_object(json) {
       if(body.hasOwnProperty(key)) {
          if(key === 'type' && body[key] === 'box') {
             box = box_object(body)
-            let box_inner = box_recursive(box, body['contents'])
+            layout = body['layout']
+            let box_inner = box_recursive(box, layout, body['contents'])
             box = box_inner
          }
       }
@@ -76,7 +79,8 @@ function bubble_object(json) {
       if(footer.hasOwnProperty(key)) {
          if(key === 'type' && footer[key] === 'box') {
             box = box_object(footer)
-            let box_inner = box_recursive(box, footer['contents'])
+            layout = footer['layout']
+            let box_inner = box_recursive(box, layout, footer['contents'])
             box = box_inner
          }
       }
@@ -98,18 +102,20 @@ function hero_box_video(hero) {
    <source src="${hero?.url}" type="video/webm">
 </video></div></div>`
 }
-function box_recursive(parent_box, json) {
+function box_recursive(parent_box, layout, json) {
    let result = []
    json.forEach((obj, index) => {
       let temp
       if(obj['type'] === 'box') {
          let temp2 = box_object(obj)
-         temp = box_recursive(temp2, obj['contents'])
+         layout2 = obj['layout']
+         temp = box_recursive(temp2, layout2, obj['contents'])
       } else if(obj['type'] === 'text' && obj['contents'] && obj['contents'].length > 0 ) {
-         let temp2 = convert_object(obj)
-         temp = box_recursive(temp2, obj['contents'])
+         let temp2 = convert_object(layout, obj)
+         layout2 = obj['layout']
+         temp = box_recursive(temp2, layout2, obj['contents'])
       } else {
-         temp = convert_object(obj)
+         temp = convert_object(layout, obj)
       }
       result[index] = temp
    })
@@ -121,7 +127,7 @@ function box_recursive(parent_box, json) {
    return parent_box
 }
 
-function convert_object(json) {
+function convert_object(layout, json) {
    switch(json['type']) {
       case 'image':
          object = image_object(json)
@@ -145,7 +151,7 @@ function convert_object(json) {
          object = spacer_object(json)
          break;
       case 'separator':
-         object = separator_object(json)
+         object = separator_object(layout, json)
          break;
       default:
          object = null
@@ -619,12 +625,12 @@ function image_object(json) {
 
    
 }
-function separator_object(json) {
+function separator_object(layout, json) {
    let style = ''
    let {margin, color} = json
 
    if(margin && margin.indexOf("px") >= 0) {
-      style += `margin-top:${margin};`
+      style += (layout === 'vertical') ? `margin-top:${margin};` : `margin-left:${margin};`
       exmgn = ''
    } else {
       exmgn = (margin) ? 'ExMgnT' + upperalldigit(margin) : ''
