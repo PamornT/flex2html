@@ -367,7 +367,6 @@ function box_object(json) {
 function button_object(json) {
    style2 = ''
    style3 = ''
-   
    let {flex, margin, position, height, style, color, gravity, adjustMode, offsetTop, offsetBottom, offsetStart, offsetEnd, action} = json
 
    fl = ''
@@ -407,7 +406,7 @@ function button_object(json) {
    }
 
    if(color) {
-      style3 += `background-color:${color} !important;`
+      style3 += (style === 'link') ? `color:${color} !important;` : `background-color:${color} !important;`
    }
 
    if(offsetTop && offsetTop.indexOf("px") >= 0) {
