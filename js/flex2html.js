@@ -32,6 +32,8 @@ function bubble_object(json) {
    let box = ''
    if(hero?.type === 'video') {
       box = hero_box_video(hero)
+   } else if(hero?.type === 'image') {
+      box = convert_object('', hero)
    } else {
       for(let key in hero){
          if(hero.hasOwnProperty(key)) {
@@ -67,7 +69,6 @@ function bubble_object(json) {
          if(key === 'type' && body[key] === 'box') {
             box = box_object(body)
             layout = body['layout']
-            console.log(body)
             let box_inner = box_recursive(box, layout, body['contents'])
             box = box_inner
          }
@@ -107,7 +108,6 @@ function box_recursive(parent_box, layout, json) {
    let result = []
    json.forEach((obj, index) => {
       let temp
-      console.log(obj)
       if(obj['type'] === 'box') {
          let temp2 = box_object(obj)
          layout2 = obj['layout']
