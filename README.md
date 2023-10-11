@@ -38,7 +38,128 @@ flex2html(elementId, flexJson)
       
       <script>
          const target_element = "chatbox"
-         flex2html("flex1", {"type":"flex","altText":"Flex Message","contents":{"type":"bubble","hero":{"type":"image","url":"https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png","size":"full","aspectRatio":"20:13","aspectMode":"cover","action":{"type":"uri","uri":"http://linecorp.com/"}},"body":{"type":"box","layout":"vertical","contents":[{"type":"text","text":"Brown Cafe","weight":"bold","size":"xl"},{"type":"box","layout":"baseline","margin":"md","contents":[{"type":"icon","size":"sm","url":"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"},{"type":"icon","size":"sm","url":"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"},{"type":"icon","size":"sm","url":"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"},{"type":"icon","size":"sm","url":"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png"},{"type":"icon","size":"sm","url":"https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"},{"type":"text","text":"4.0","size":"sm","color":"#999999","margin":"md","flex":0}]},{"type":"box","layout":"vertical","margin":"lg","spacing":"sm","contents":[{"type":"box","layout":"baseline","spacing":"sm","contents":[{"type":"text","text":"Place","color":"#aaaaaa","size":"sm","flex":1},{"type":"text","text":"Miraina Tower, 4-1-6 Shinjuku, Tokyo","wrap":true,"color":"#666666","size":"sm","flex":5}]},{"type":"box","layout":"baseline","spacing":"sm","contents":[{"type":"text","text":"Time","color":"#aaaaaa","size":"sm","flex":1},{"type":"text","text":"10:00 - 23:00","wrap":true,"color":"#666666","size":"sm","flex":5}]}]}]},"footer":{"type":"box","layout":"vertical","spacing":"sm","contents":[{"type":"button","style":"link","height":"sm","action":{"type":"uri","label":"CALL","uri":"https://linecorp.com"}},{"type":"button","style":"link","height":"sm","action":{"type":"uri","label":"WEBSITE","uri":"https://linecorp.com"}},{"type":"spacer","size":"sm"}],"flex":0}}})
+         flex2html{
+  "line": {
+    "type": "flex",
+    "altText": "พื้นหลังแบบเบลอ",
+    "contents": {
+      "type": "carousel",
+      "contents": [
+        {
+          "type": "bubble",
+          "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [
+              {
+                "type": "image",
+                "url": "https://picsum.photos/1040/1040/?blur=8",
+                "size": "full",
+                "aspectMode": "cover",
+                "aspectRatio": "1:1",
+                "gravity": "top"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "Sally The Rock",
+                        "size": "xl",
+                        "color": "#ffffff",
+                        "weight": "bold",
+                        "align": "center",
+                        "wrap": true
+                      }
+                    ],
+                    "backgroundColor": "#00a30055",
+                    "cornerRadius": "md",
+                    "borderColor": "#00a300",
+                    "borderWidth": "3px"
+                  },
+                  {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                      {
+                        "type": "filler"
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                          {
+                            "type": "filler"
+                          },
+                          {
+                            "type": "text",
+                            "text": "CLICK",
+                            "color": "#ffffff",
+                            "offsetTop": "-2px"
+                          },
+                          {
+                            "type": "filler"
+                          }
+                        ],
+                        "spacing": "sm"
+                      },
+                      {
+                        "type": "filler"
+                      }
+                    ],
+                    "borderWidth": "1px",
+                    "cornerRadius": "4px",
+                    "spacing": "sm",
+                    "borderColor": "#ffffff",
+                    "margin": "xxl",
+                    "height": "40px",
+                    "backgroundColor": "#4d4d4d55",
+                    "action": {
+                      "type": "uri",
+                      "label": "action",
+                      "uri": "https://picsum.photos/1040/1040/?blur=8"
+                    }
+                  }
+                ],
+                "position": "absolute",
+                "offsetBottom": "0px",
+                "offsetStart": "0px",
+                "offsetEnd": "0px",
+                "paddingAll": "20px",
+                "paddingTop": "18px",
+                "offsetTop": "100px"
+              },
+              {
+                "type": "box",
+                "layout": "vertical",
+                "contents": [
+                  {
+                    "type": "image",
+                    "url": "https://sv1.picz.in.th/images/2021/08/04/2qQv8n.png",
+                    "animated": true,
+                    "size": "full"
+                  }
+                ],
+                "position": "absolute",
+                "cornerRadius": "150px",
+                "offsetTop": "18px",
+                "offsetStart": "18px",
+                "height": "80px",
+                "width": "80px"
+              }
+            ],
+            "paddingAll": "0px"
+          }
+        }
+      ]
+    }
+  }
+}
       </script>
    </body>
 </html>
