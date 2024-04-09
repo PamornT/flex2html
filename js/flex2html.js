@@ -690,7 +690,7 @@ function bubble_struc(json) {
    direction = (!direction || direction == '') ? 'ltr' : direction
    size = upper2digit(size)
 
-   return `<div class="lyItem Ly${size}"><div class="T1 fx${direction.toUpperCase()}" dir="${direction}"><!-- hero --><!-- header --><!-- body --><!-- footer --></div></div>`
+   return `<div class="lyItem Ly${size}"><div class="T1 fx${direction.toUpperCase()}" dir="${direction}"><!-- header --><!-- hero --><!-- body --><!-- footer --></div></div>`
 }
 function hero_struc(json) {
    let {styles} = json
